@@ -1,6 +1,14 @@
 import React from "react";
 import "tw-elements";
 const Header = () => {
+  const backGroundColor = {
+    backgroundColor: "rgba(0, 0, 0, 0.75)",
+  };
+  const backgroundImage = {
+    backgroundPosition: "50%",
+    backgroundImage: "url('https://mdbcdn.b-cdn.net/img/new/slides/146.webp')",
+    height: "350px",
+  };
   return (
     <div>
       <header>
@@ -83,16 +91,12 @@ const Header = () => {
         </nav>
 
         <div
-          className="relative overflow-hidden bg-no-repeat bg-cover"
-          style="
-    background-position: 50%;
-    background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/146.webp');
-    height: 350px;
-  "
+          class="relative overflow-hidden bg-no-repeat bg-cover"
+          style={backgroundImage}
         >
           <div
             className="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed"
-            style="background-color: rgba(0, 0, 0, 0.75)"
+            style={backGroundColor}
           >
             <div className="flex justify-center items-center h-full">
               <div className="text-center text-white px-6 md:px-12">
