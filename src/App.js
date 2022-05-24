@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import "tw-elements";
+import About from "./Components/About/About";
 import AddNewProduct from "./Components/AddNewProduct/AddNewProduct";
 import Blogs from "./Components/Blogs/Blogs";
 import Footer from "./Components/Footer/Footer";
@@ -46,6 +47,7 @@ function App() {
         ></Route>
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="/blogs" element={<Blogs></Blogs>}></Route>
+        <Route path="/about" element={<About></About>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
