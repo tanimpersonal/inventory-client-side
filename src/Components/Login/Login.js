@@ -1,14 +1,18 @@
 import React, { useRef } from "react";
 import {
   useAuthState,
+  useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import { useLocation, useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import auth from "../../firebase.init";
 
 const Login = () => {
   const navigate = useNavigate();
+  const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
   const [loggedUser, loggedLoading, loggedError] = useAuthState(auth);
@@ -36,11 +40,26 @@ const Login = () => {
   if (loggedUser || googleUser) {
     navigate(from, { replace: true });
   }
+  const handlePasswordReset = () => {
+    sendPasswordResetEmail(email.current.value);
+    if (email.current.value) {
+      toast("Password Reset Mail Sent", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  };
 
   return (
     <div>
       <div className="login">
         {loading}
+
         <section className="h-screen">
           <div className="container px-6 py-12 h-full">
             <div className="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
@@ -83,7 +102,15 @@ const Login = () => {
                       ""
                     )}
                   </div>
-
+                  <div className="flex justify-between items-center mb-6">
+                    <button
+                      onClick={() => handlePasswordReset()}
+                      href="#!"
+                      className="text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 duration-200 transition ease-in-out"
+                    >
+                      Reset Password
+                    </button>
+                  </div>
                   <button
                     type="submit"
                     className="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
@@ -112,6 +139,7 @@ const Login = () => {
           </div>
         </section>
       </div>
+      <ToastContainer />
     </div>
   );
 };
