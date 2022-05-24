@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import {
   useAuthState,
   useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import { useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
@@ -11,6 +12,8 @@ const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
   const [loggedUser, loggedLoading] = useAuthState(auth);
+  const [signInWithGoogle, googleUser, googleLoading] =
+    useSignInWithGoogle(auth);
   const facebook = {
     backgroundColor: "#3b5998",
   };
@@ -23,10 +26,14 @@ const Login = () => {
     console.log(email.current.value, password.current.value);
     signInWithEmailAndPassword(email.current.value, password.current.value);
   };
-  if (loggedLoading) {
+  //   const handleGoogleSignIn = (event) => {
+  //     event.preventDefault();
+
+  //   };
+  if (loggedLoading || googleLoading) {
     const loading = <div>Loading....</div>;
   }
-  if (loggedUser) {
+  if (loggedUser || googleUser) {
     navigate(from, { replace: true });
   }
 
@@ -82,6 +89,20 @@ const Login = () => {
                     Sign in
                   </button>
                 </form>
+                <div class="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5">
+                  <p class="text-center font-semibold mx-4 mb-0">OR</p>
+                </div>
+                <div className="google">
+                  <button
+                    onClick={() => signInWithGoogle()}
+                    type="submit"
+                    className="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
+                    data-mdb-ripple="true"
+                    data-mdb-ripple-color="light"
+                  >
+                    Google Sign In
+                  </button>
+                </div>
               </div>
             </div>
           </div>
