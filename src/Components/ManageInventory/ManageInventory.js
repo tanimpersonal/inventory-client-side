@@ -6,7 +6,7 @@ import Table from "../Table/Table";
 const ManageInventory = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    axios("http://localhost:5000/products").then((data) =>
+    axios("https://assignment-11-tanim.herokuapp.com/products").then((data) =>
       setProducts(data.data)
     );
   }, []);
@@ -14,13 +14,15 @@ const ManageInventory = () => {
   //   const allProducts = products.data;
   //   console.log(allProducts);
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:5000/products/${id}`).then((data) => {
-      console.log(data.data);
-      if (data.data.deletedCount > 0) {
-        const remaining = products.filter((product) => product._id !== id);
-        setProducts(remaining);
-      }
-    });
+    axios
+      .delete(`https://assignment-11-tanim.herokuapp.com/products/${id}`)
+      .then((data) => {
+        console.log(data.data);
+        if (data.data.deletedCount > 0) {
+          const remaining = products.filter((product) => product._id !== id);
+          setProducts(remaining);
+        }
+      });
   };
   //   console.log(allProducts);
   return (

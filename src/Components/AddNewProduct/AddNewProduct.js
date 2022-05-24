@@ -10,7 +10,7 @@ const AddNewProduct = () => {
   const productQuantity = useRef("");
   const handleAddProduct = (event) => {
     event.preventDefault();
-    axios.post("http://localhost:5000/products/", {
+    axios.post("https://assignment-11-tanim.herokuapp.com/products/", {
       title: productTitle.current.value,
       price: productPrice.current.value,
       description: productDescription.current.value,

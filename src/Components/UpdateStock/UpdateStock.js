@@ -10,8 +10,8 @@ const UpdateStock = () => {
   const [product, setProduct] = useState({});
 
   const getUpdate = () => {
-    axios(`http://localhost:5000/products/${_id}`).then((data) =>
-      setProduct(data)
+    axios(`https://assignment-11-tanim.herokuapp.com/products/${_id}`).then(
+      (data) => setProduct(data)
     );
   };
   useEffect(() => {
@@ -24,9 +24,12 @@ const UpdateStock = () => {
     const quantity = singleProduct.quantity;
     const newQuantity = quantity - 1;
     console.log(newQuantity);
-    await axios.put(`http://localhost:5000/products/${_id}`, {
-      quantity: `${newQuantity}`,
-    });
+    await axios.put(
+      `https://assignment-11-tanim.herokuapp.com/products/${_id}`,
+      {
+        quantity: `${newQuantity}`,
+      }
+    );
 
     getUpdate();
   };
@@ -34,9 +37,12 @@ const UpdateStock = () => {
   const handleRestock = async (event) => {
     event.preventDefault();
     const updateQuantity = newQuantity.current.value;
-    await axios.put(`http://localhost:5000/products/${_id}`, {
-      quantity: `${updateQuantity}`,
-    });
+    await axios.put(
+      `https://assignment-11-tanim.herokuapp.com/products/${_id}`,
+      {
+        quantity: `${updateQuantity}`,
+      }
+    );
     getUpdate();
   };
   return (

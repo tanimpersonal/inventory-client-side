@@ -11,7 +11,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
-  const [loggedUser, loggedLoading] = useAuthState(auth);
+  const [loggedUser, loggedLoading, loggedError] = useAuthState(auth);
   const [signInWithGoogle, googleUser, googleLoading] =
     useSignInWithGoogle(auth);
   const facebook = {
@@ -72,12 +72,16 @@ const Login = () => {
                   </div>
 
                   <div className="flex justify-between items-center mb-6">
-                    <a
-                      href="#!"
-                      className="text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 duration-200 transition ease-in-out"
-                    >
-                      Forgot password?
-                    </a>
+                    {error ? (
+                      <p
+                        href="#!"
+                        className="text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 duration-200 transition ease-in-out"
+                      >
+                        Wrong Auth/Password
+                      </p>
+                    ) : (
+                      ""
+                    )}
                   </div>
 
                   <button
