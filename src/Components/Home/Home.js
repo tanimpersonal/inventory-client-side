@@ -98,7 +98,7 @@ const Home = () => {
       )}
       <div className="product-price-chart">
         <h1 className="text-center my-5 text-4xl">Price Chart</h1>
-        <ResponsiveContainer width="50%" aspect={1} height="10%">
+        <ResponsiveContainer width="100%" aspect={1} height="100%">
           <BarChart
             width={200}
             height={100}
@@ -122,7 +122,7 @@ const Home = () => {
       </div>
       <div className="product-quantity-chart">
         <h1 className="my-5 text-4xl text-center">Quantity Chart</h1>
-        <ResponsiveContainer width="50%" height="100%" aspect={1}>
+        <ResponsiveContainer width="100%" height="100%" aspect={1}>
           <BarChart width={150} height={40} data={productsData}>
             <Bar dataKey="quantity" fill="#8884d8" />
             <Tooltip></Tooltip>
