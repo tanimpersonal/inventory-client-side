@@ -1,23 +1,39 @@
 import React, { useRef } from "react";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useAuthState,
+  useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
+import { useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+  const [loggedUser, loggedLoading] = useAuthState(auth);
   const facebook = {
     backgroundColor: "#3b5998",
   };
   const email = useRef("");
   const password = useRef("");
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   const handleLogin = (event) => {
     event.preventDefault();
     console.log(email.current.value, password.current.value);
     signInWithEmailAndPassword(email.current.value, password.current.value);
   };
+  if (loggedLoading) {
+    const loading = <div>Loading....</div>;
+  }
+  if (loggedUser) {
+    navigate(from, { replace: true });
+  }
+
   return (
     <div>
       <div className="login">
+        {loading}
         <section className="h-screen">
           <div className="container px-6 py-12 h-full">
             <div className="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">

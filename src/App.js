@@ -5,6 +5,8 @@ import Header from "./Components/Header/Header";
 import Home from "./Components/Home/Home";
 import Login from "./Components/Login/Login";
 import Register from "./Components/Register/Register";
+import RequireAuth from "./Components/RequireAuth/RequireAuth";
+import UpdateStock from "./Components/UpdateStock/UpdateStock";
 
 function App() {
   return (
@@ -12,6 +14,15 @@ function App() {
       <Header></Header>
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
+        <Route
+          path="/updatestock/:id"
+          element={
+            <RequireAuth>
+              <UpdateStock></UpdateStock>
+            </RequireAuth>
+          }
+        ></Route>
+
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
       </Routes>
