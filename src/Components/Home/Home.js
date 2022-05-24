@@ -1,5 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Legend,
+  Pie,
+  PieChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 import SingleProducts from "../SingleProducts/SingleProducts";
 import useData from "../Utility/useData";
 
@@ -84,6 +96,39 @@ const Home = () => {
           </div>
         </div>
       )}
+      <div className="product-price-chart">
+        <h1 className="text-center my-5 text-4xl">Price Chart</h1>
+        <ResponsiveContainer width="50%" aspect={1} height="10%">
+          <BarChart
+            width={200}
+            height={100}
+            data={productsData}
+            margin={{
+              top: 5,
+              right: 30,
+              left: 20,
+              bottom: 5,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="price" fill="#8884d8" />
+            <Bar dataKey="title" fill="#82ca9d" />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
+      <div className="product-quantity-chart">
+        <h1 className="my-5 text-4xl text-center">Quantity Chart</h1>
+        <ResponsiveContainer width="50%" height="100%" aspect={1}>
+          <BarChart width={150} height={40} data={productsData}>
+            <Bar dataKey="quantity" fill="#8884d8" />
+            <Tooltip></Tooltip>
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
     </div>
   );
 };
