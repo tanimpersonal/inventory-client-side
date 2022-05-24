@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "tw-elements";
 import AddNewProduct from "./Components/AddNewProduct/AddNewProduct";
+import Blogs from "./Components/Blogs/Blogs";
 import Footer from "./Components/Footer/Footer";
 import Header from "./Components/Header/Header";
 import Home from "./Components/Home/Home";
@@ -43,6 +44,7 @@ function App() {
           }
         ></Route>
         <Route path="/register" element={<Register></Register>}></Route>
+        <Route path="/blogs" element={<Blogs></Blogs>}></Route>
       </Routes>
       <Footer></Footer>
     </div>
