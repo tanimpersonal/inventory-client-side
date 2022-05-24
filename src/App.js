@@ -28,11 +28,19 @@ function App() {
         <Route path="/login" element={<Login></Login>}></Route>
         <Route
           path="/add-new"
-          element={<AddNewProduct></AddNewProduct>}
+          element={
+            <RequireAuth>
+              <AddNewProduct></AddNewProduct>
+            </RequireAuth>
+          }
         ></Route>
         <Route
           path="/manage-inventory"
-          element={<ManageInventory></ManageInventory>}
+          element={
+            <RequireAuth>
+              <ManageInventory></ManageInventory>
+            </RequireAuth>
+          }
         ></Route>
         <Route path="/register" element={<Register></Register>}></Route>
       </Routes>

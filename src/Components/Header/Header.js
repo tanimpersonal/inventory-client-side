@@ -110,6 +110,26 @@ const Header = () => {
                     </button>
                   </li>
                 )}
+                {user && (
+                  <li className="nav-item mb-2 lg:mb-0">
+                    <Link
+                      to="/manage-inventory"
+                      className="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                    >
+                      Manage Inventory
+                    </Link>
+                  </li>
+                )}
+                {user && (
+                  <li className="nav-item mb-2 lg:mb-0">
+                    <Link
+                      to="/add-new"
+                      className="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                    >
+                      Add New
+                    </Link>
+                  </li>
+                )}
               </ul>
             </div>
           </div>
