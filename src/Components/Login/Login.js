@@ -52,6 +52,16 @@ const Login = () => {
         draggable: true,
         progress: undefined,
       });
+    } else {
+      toast("Password Reset Mail Not Sent. Give Email", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 

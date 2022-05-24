@@ -77,11 +77,21 @@ const UpdateStock = () => {
               </div>
             </div>
           </div>
-          <div className="h1">Restock The Item: </div>
-          <div className="form">
+          <div className="h1 mt-5 text-center">Restock The Item: </div>
+          <div className="form flex justify-center mt-5">
             <form onSubmit={handleRestock}>
-              <input ref={newQuantity} type="number" name="" id="" />
-              <input type="submit" value="Restock" />
+              <input
+                className="border-2"
+                ref={newQuantity}
+                type="number"
+                name=""
+                id=""
+              />
+              <input
+                className="bg-blue-500 p-1 rounded-2xl ml-2"
+                type="submit"
+                value="Restock"
+              />
             </form>
           </div>
         </div>

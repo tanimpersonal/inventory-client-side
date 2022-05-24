@@ -11,7 +11,7 @@ const Home = () => {
     <div>
       {productsData ? (
         <div>
-          <div className="all-products grid gap-5 grid-cols-3">
+          <div className="all-products grid gap-5 md:grid-cols-3">
             {productsData.slice(0, 6).map((product) => (
               <SingleProducts
                 key={product._id}
