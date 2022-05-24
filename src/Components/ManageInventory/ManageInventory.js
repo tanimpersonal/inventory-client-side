@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Table from "../Table/Table";
 
 const ManageInventory = () => {
@@ -35,12 +36,6 @@ const ManageInventory = () => {
                       scope="col"
                       class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                     >
-                      #
-                    </th>
-                    <th
-                      scope="col"
-                      class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                    >
                       Product Title
                     </th>
                     <th
@@ -60,9 +55,6 @@ const ManageInventory = () => {
                 <tbody>
                   {products?.map((product) => (
                     <tr key={product._id} class="border-b">
-                      <td class="px-6 py-4 whitespace-wrap text-sm font-medium text-gray-900">
-                        {product.id}
-                      </td>
                       <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-wrap">
                         {product.title}
                       </td>
@@ -80,6 +72,13 @@ const ManageInventory = () => {
               </table>
             </div>
           </div>
+        </div>
+      </div>
+      <div className="add-item flex justify-center mt-5">
+        <div className="btn p-5 rounded-2xl bg-blue-500">
+          <Link to="/add-new">
+            <button>Add New Product</button>
+          </Link>
         </div>
       </div>
     </div>
