@@ -15,11 +15,20 @@ This website is based on a inventory like thing. Here any user can manage his/he
 - Login
 - Register
 
-## Technology
+## Frontend
 
-- Firebase
 - Tailwind
 - React
 - JSX
 - Tailwind Elements
 - FontAwesome
+- Toastify
+- React Charts
+
+# Backend
+- Node
+- Express
+- Firebase
+
+# Database
+- Mongo
